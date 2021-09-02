@@ -13,5 +13,8 @@
       {{ node.url }}
     </span>
   </div>
-  <div class="blocks-wrapper" *ngIf="expanded">Blocks go here</div>
+  <div class="blocks-wrapper" *ngIf="expanded">
+    <app-block [nodeUrl]="node.url"></app-block>
+    OK
+  </div>
 </div>

@@ -10,10 +10,10 @@ import { NodesStore } from '../services/nodesStore.service';
 export class NodesComponent implements OnInit {
   expandedNodeURL: string = null;
 
-  constructor(public store: NodesStore) {}
+  constructor(public storeNodes: NodesStore) { }
 
   ngOnInit() {
-    this.store.getStatus();
+    this.storeNodes.getStatus();
   }
 
   ToogleExpand(node: Node): void {

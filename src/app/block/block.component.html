@@ -1,0 +1,4 @@
+<ng-template ngFor let-block [ngForOf]="storeBlocks.state$ | async">
+    <p> {{ (block.attributes.index).toString().padStart(3,'0') }}</p>
+    <p> {{ block.attributes.data }}</p>
+</ng-template>

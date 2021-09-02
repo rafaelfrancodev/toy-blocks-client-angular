@@ -1,6 +1,8 @@
+import Block from 'src/models/block.model';
 import { Node } from 'src/models/node.model';
 
 export class State {
+
   list: Node[] = [
     {
       url: 'https://thawing-springs-53971.herokuapp.com',
@@ -27,4 +29,6 @@ export class State {
       loading: true
     }
   ];
+
+  blocks: Block[]
 }
