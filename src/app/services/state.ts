@@ -30,5 +30,5 @@ export class State {
     }
   ];
 
-  blocks: Block[]
+  blocks: Block[] = [];
 }

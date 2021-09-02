@@ -5,3 +5,7 @@
         <span class="block-text-content"> {{ block.attributes.data }}</span>
     </div>
 </ng-template>
+<div *ngIf="storeBlocks.state$ | async">
+    <p *ngIf="storeBlocks.state == null"> Carregando...</p>
+    <p *ngIf="storeBlocks.state.length == 0"> Empty data...</p>
+</div>

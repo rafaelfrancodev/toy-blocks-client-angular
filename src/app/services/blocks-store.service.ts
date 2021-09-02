@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { BaseResult } from 'src/models/base/base-result.model';
 import Block from 'src/models/block.model';
 import { ApiService } from './api.service';
 import { State } from './state';
 import { Store } from './store';
-import { forkJoin, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class BlocksStore extends Store<Block[]> {
   }
 
   public resetBlocks() {
-    this.setState([]);
+    this.setState(null);
   }
 
   public getBlocks(nodeUrl: string) {
@@ -32,8 +32,8 @@ export class BlocksStore extends Store<Block[]> {
           blocks: []
         })
       ),
-      map<BaseResult<Block[]>, any>((blocks: BaseResult<Block[]>) => {
-        return [...blocks.data];
+      map<BaseResult<Block[]>, Block[]>((blocks: BaseResult<Block[]>) => {
+        return (blocks.data) ? [...blocks.data] : [];
       })
     );
   }
