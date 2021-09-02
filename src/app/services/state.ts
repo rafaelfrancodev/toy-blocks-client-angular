@@ -1,5 +1,6 @@
 import Block from 'src/models/block.model';
 import { Node } from 'src/models/node.model';
+import Blocks from 'src/models/blocks.model';
 
 export class State {
 
@@ -30,5 +31,8 @@ export class State {
     }
   ];
 
-  blocks: Block[] = [];
+  blocks: Blocks = {
+    blocks: [],
+    loading: true
+  };
 }

@@ -1,11 +1,17 @@
-<ng-template ngFor let-block [ngForOf]="storeBlocks.state$ | async">
-    <div class="block-content">
-        <span class="block-text-title"> {{ (block.attributes.index).toString().padStart(3,'0') }}</span>
-        <div class="clear"></div>
-        <span class="block-text-content"> {{ block.attributes.data }}</span>
-    </div>
-</ng-template>
 <div *ngIf="storeBlocks.state$ | async">
-    <p *ngIf="storeBlocks.state == null"> Carregando...</p>
-    <p *ngIf="storeBlocks.state.length == 0"> Empty data...</p>
+    <ng-template ngFor let-block [ngForOf]="storeBlocks.state.blocks">
+        <div class="block-content">
+            <span class="block-text-title"> {{ (block.attributes.index).toString().padStart(3,'0') }}</span>
+            <div class="clear"></div>
+            <span class="block-text-content"> {{ block.attributes.data }}</span>
+        </div>
+    </ng-template>
+</div>
+
+<div *ngIf="storeBlocks.state$ | async">
+    <div *ngIf="storeBlocks.state.loading" class="loading-ellipsis">
+        <div></div>
+        <div></div>
+    </div>
+    <p *ngIf="!storeBlocks.state.loading && storeBlocks.state.blocks.length == 0"> Empty data...</p>
 </div>

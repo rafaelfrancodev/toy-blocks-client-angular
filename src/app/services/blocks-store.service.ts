@@ -6,11 +6,12 @@ import Block from 'src/models/block.model';
 import { ApiService } from './api.service';
 import { State } from './state';
 import { Store } from './store';
+import Blocks from 'src/models/blocks.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BlocksStore extends Store<Block[]> {
+export class BlocksStore extends Store<Blocks> {
   constructor(private api: ApiService) {
     super(new State().blocks);
   }
@@ -20,8 +21,15 @@ export class BlocksStore extends Store<Block[]> {
   }
 
   public getBlocks(nodeUrl: string) {
-    this._getBlocks(nodeUrl).subscribe((value: Block[]) => {
-      this.setState([...value]);
+    this.setState({
+      blocks: [],
+      loading: true
+    });
+    this._getBlocks(nodeUrl).subscribe((value: Blocks) => {
+      this.setState({
+        blocks: [...value.blocks],
+        loading: false
+      });
     });
   }
 
@@ -29,11 +37,15 @@ export class BlocksStore extends Store<Block[]> {
     return this.api.get(`${nodeUrl}/api/v1/blocks`).pipe(
       catchError(error =>
         of({
-          blocks: []
+          blocks: [],
+          loading: false
         })
       ),
-      map<BaseResult<Block[]>, Block[]>((blocks: BaseResult<Block[]>) => {
-        return (blocks.data) ? [...blocks.data] : [];
+      map<BaseResult<Block[]>, Blocks>((blocks: BaseResult<Block[]>) => {
+        return {
+          blocks: (blocks.data) ? [...blocks.data] : [],
+          loading: false
+        }
       })
     );
   }
