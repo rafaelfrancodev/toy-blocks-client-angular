@@ -1,14 +1,14 @@
 <div class="wrapper" *ngIf="loading; else loaded">
-  <div class="loading-ellipsis">
-    <div></div>
-    <div></div>
-  </div>
+    <div class="loading-ellipsis">
+        <div></div>
+        <div></div>
+    </div>
 </div>
 
 <ng-template #loaded>
-  <div [ngClass]="online ? 'status-ball status-online' : 'status-ball status-offline'">
-  </div>
-  <span class="title-status">
+    <div [ngClass]="online ? 'status-ball status-online' : 'status-ball status-offline'">
+    </div>
+    <span [ngClass]="online ? 'title-status' : 'title-status title-status-offline'">
     {{ online ? 'Online' : 'Offline' }}
   </span>
 </ng-template>

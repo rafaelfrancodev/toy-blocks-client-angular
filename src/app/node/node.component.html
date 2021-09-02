@@ -5,7 +5,10 @@
         </h1>
         <div class="toolbar">
             <app-status [loading]="node.loading" [online]="node.online"></app-status>
-            <button class="expander" [ngClass]="{ expanded: expanded }" (click)="handleToogleExpand(node)"></button>
+            <button class="expander" [ngClass]="{ expanded: expanded }" (click)="handleToogleExpand(node)">
+                <img  *ngIf="expanded" class="icon-arrow" src="../../assets/images/arrow-up.png" />
+                <img  *ngIf="!expanded" class="icon-arrow" src="../../assets/images/arrow-down.png" />
+            </button>
         </div>
     </article>
     <div class="body">
@@ -14,6 +17,7 @@
     </span>
     </div>
     <div class="blocks-wrapper" *ngIf="expanded">
+        <div class="clear app-block-top"></div>
         <app-block [nodeUrl]="node.url"></app-block>
     </div>
 </div>

@@ -7,13 +7,12 @@
     top: 0px;
     padding-left: 8px;
     padding-right: 8px;
+    margin-bottom: 4px;
 }
 
 .block-text-title {
     color: #304FFE;
-    left: 8px;
-    right: 7.72px;
-    top: 8px;
+    padding-top: 8px;
     font-style: normal;
     text-align: left;
     font-weight: bold;
@@ -22,9 +21,6 @@
 }
 
 .block-text-content {
-    left: 8px;
-    right: 7.72px;
-    top: 24px;
     text-align: left;
     /* 14 sp • Body 2 */
     font-family: Roboto;
