@@ -13,6 +13,7 @@ export class BlockComponent implements OnInit {
   constructor(public storeBlocks: BlocksStore) { }
 
   ngOnInit() {
+    this.storeBlocks.resetBlocks();
     this.storeBlocks.getBlocks(this.nodeUrl);
   }
 

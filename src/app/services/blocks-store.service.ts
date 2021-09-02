@@ -15,6 +15,10 @@ export class BlocksStore extends Store<Block[]> {
     super(new State().blocks);
   }
 
+  public resetBlocks() {
+    this.setState([]);
+  }
+
   public getBlocks(nodeUrl: string) {
     this._getBlocks(nodeUrl).subscribe((value: Block[]) => {
       this.setState([...value]);

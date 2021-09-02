@@ -6,9 +6,9 @@
 </div>
 
 <ng-template #loaded>
-  <div [ngClass]="{ wrapper: true, success: online, danger: !online }">
-    <span>
-      {{ online ? 'Online' : 'Offline' }}
-    </span>
+  <div [ngClass]="online ? 'status-ball status-online' : 'status-ball status-offline'">
   </div>
+  <span class="title-status">
+    {{ online ? 'Online' : 'Offline' }}
+  </span>
 </ng-template>
