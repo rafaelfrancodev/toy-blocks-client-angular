@@ -8,6 +8,7 @@ import {
 import { NodeComponent } from '../node/node.component';
 import { StatusComponent } from '../status/status.component';
 import { NodesComponent } from './nodes.component';
+import { BlockComponent } from '../block/block.component';
 
 describe('NodesComponent', () => {
   let httpClient: HttpClient;
@@ -19,7 +20,7 @@ describe('NodesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [NodesComponent, NodeComponent, StatusComponent],
+      declarations: [NodesComponent, NodeComponent, StatusComponent, BlockComponent],
     }).compileComponents();
 
     httpClient = TestBed.get(HttpClient);
